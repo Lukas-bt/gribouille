@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Dessin">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Charger" />
+                  <MenuItem mnemonicParsing="false" text="Sauvegarder" />
+                  <MenuItem mnemonicParsing="false" text="Exporter" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quitter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Outils">
+            <items>
+                  <Menu mnemonicParsing="false" text="Epaisseur">
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="epaisseur" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="2" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="3" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="4" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="5" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="6" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="7" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="8" toggleGroup="$epaisseur" />
+                        <RadioMenuItem mnemonicParsing="false" text="9" toggleGroup="$epaisseur" />
+                     </items>
+                  </Menu>
+                  <CheckMenuItem mnemonicParsing="false" text="Crayon" />
+                  <CheckMenuItem mnemonicParsing="false" text="Etoile" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Aide">
+            <items>
+              <MenuItem mnemonicParsing="false" text="A propos" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <GridPane prefHeight="17.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="302.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="298.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="298.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="298.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="298.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="X : " />
+                  <Label prefHeight="17.0" prefWidth="40.0" text="0" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Y : " />
+                  <Label prefHeight="17.0" prefWidth="40.0" text="0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Epaisseur : " />
+                  <Label prefHeight="17.0" prefWidth="40.0" text="3" />
+               </children>
+            </HBox>
+            <Label prefHeight="13.0" prefWidth="26.0" text="Outil" GridPane.columnIndex="3" />
+            <Label text="Couleur" GridPane.columnIndex="4" />
+         </children>
+      </GridPane>
+   </bottom>
+   <right>
+      <VBox prefHeight="358.0" prefWidth="127.0" BorderPane.alignment="CENTER">
+         <children>
+            <ColorPicker prefHeight="48.0" prefWidth="125.0" />
+            <TilePane prefHeight="351.0" prefWidth="125.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="55.0" stroke="BLACK" strokeType="INSIDE" width="55.0">
+                     <TilePane.margin>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </TilePane.margin>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ff21" height="55.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3121ff" height="55.0" layoutX="15.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ddff" height="55.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff05c0" height="55.0" layoutX="74.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e5ff00" height="55.0" layoutX="13.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#070707" height="55.0" layoutX="74.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" layoutX="13.0" layoutY="196.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+               </children>
+            </TilePane>
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <Pane prefHeight="358.0" prefWidth="475.0" BorderPane.alignment="CENTER">
+         <children>
+            <Canvas height="361.0" width="475.0" />
+         </children>
+      </Pane>
+   </left>
+</BorderPane>
