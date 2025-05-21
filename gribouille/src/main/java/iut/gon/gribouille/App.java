@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import iut.gon.gribouille.modele.Dessin;
+
 /**
  * JavaFX App
  */
@@ -19,13 +21,12 @@ public class App extends Application {
     private static Scene scene;
     private double prevX;
     private double prevY;
-    Canvas dessin;
-    
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("CadreGribouille"), 640, 480);
-        dessin = (Canvas) scene.lookup("Canvas");
+    	Dessin d = new Dessin();
+        scene = new Scene(loadFXML("CadreGribouille", d), 640, 480);
+        stage.titleProperty().bind(d.nomDuFichierProperty());
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(event -> {
@@ -36,38 +37,17 @@ public class App extends Application {
         	}
         });
         
-        dessin.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				
-				prevX = event.getX();
-				prevY = event.getY();
-				
-			}
-        	
-        });
-        
-        dessin.addEventFilter(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				
-				dessin.getGraphicsContext2D().strokeLine(prevX, prevY, event.getX(),event.getY());
-				prevX = event.getX();
-				prevY = event.getY();
-			}
-        	
-        });
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static void setRoot(String fxml, Dessin d) throws IOException {
+        scene.setRoot(loadFXML(fxml, d));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    private static Parent loadFXML(String fxml, Dessin d) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+        Parent p = fxmlLoader.load();
+        ((Controller) fxmlLoader.getController()).setDessin(d);
+        return p;
     }
 
     public static void main(String[] args) {
