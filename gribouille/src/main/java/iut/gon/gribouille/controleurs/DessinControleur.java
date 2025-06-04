@@ -31,10 +31,10 @@ public class DessinControleur implements Initializable {
 		toile.widthProperty().bind(page.widthProperty());
 		toile.heightProperty().bind(page.heightProperty());
 		toile.heightProperty().addListener((obs, oldVal, newVal) -> {
-			dessine();
+			control.dessine();
 		});
 		toile.widthProperty().addListener((obs, oldVal, newVal) -> {
-			dessine();
+			control.dessine();
 		});
 		
 	}
@@ -43,31 +43,6 @@ public class DessinControleur implements Initializable {
 		this.control = c;
 	}
 	
-	public void dessine() {
-		toile.getGraphicsContext2D().clearRect(0, 0, toile.getWidth(), toile.getHeight());
-		List<Figure> tab = control.dessin.getFigures();
-		for (int i = 0; i < tab.size(); i++) {
-			Figure f = tab.get(i);
-			for (int j = 1; j < f.getPoints().size(); j++) {
-				if (f instanceof  Trace) {
-                    double x0 = f.getPoints().get(j-1).getX();
-                    double y0 = f.getPoints().get(j-1).getY();
-                    double x1 = f.getPoints().get(j).getX();
-                    double y1 = f.getPoints().get(j).getY();
-                    trace(x0, y0, x1, y1);
-                }
-				else if (f instanceof Etoile) {
-                    double x = f.getPoints().get(0).getX();
-                    double y = f.getPoints().get(0).getY();
-                    double x1 = f.getPoints().get(j).getX();
-                    double y1 = f.getPoints().get(j).getY();
-                    trace(x, y, x1, y1);
-
-                }
-			}
-
-		}
-	}
 	
 	public void efface() {
 		 toile.getGraphicsContext2D().clearRect(0, 0, toile.getWidth(), toile.getHeight());
@@ -75,6 +50,10 @@ public class DessinControleur implements Initializable {
 	
 	public void trace(double x1, double y1, double x2, double y2) {
 		toile.getGraphicsContext2D().strokeLine(x1, y1, x2, y2);
+	}
+	
+	public void setEpaisseur(int epaisseur) {
+		toile.getGraphicsContext2D().setLineWidth(epaisseur);
 	}
 	
 	public void onMousePressed(MouseEvent event) {

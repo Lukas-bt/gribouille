@@ -1,10 +1,12 @@
 package iut.gon.gribouille.controleurs;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import iut.gon.gribouille.Dialogues;
 import iut.gon.gribouille.modele.Dessin;
+import iut.gon.gribouille.modele.Etoile;
 import iut.gon.gribouille.modele.Figure;
 import iut.gon.gribouille.modele.Trace;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -50,10 +52,42 @@ public class Controleur implements Initializable{
 		
 		
 	}
+	public void dessine() {
+		dessinController.toile.getGraphicsContext2D().clearRect(0, 0, dessinController.toile.getWidth(), dessinController.toile.getHeight());
+		List<Figure> tab = dessin.getFigures();
+		for (int i = 0; i < tab.size(); i++) {
+			Figure f = tab.get(i);
+			setEpaisseur(f.getEpaisseur());
+			for (int j = 1; j < f.getPoints().size(); j++) {
+				if (f instanceof  Trace) {
+                    double x0 = f.getPoints().get(j-1).getX();
+                    double y0 = f.getPoints().get(j-1).getY();
+                    double x1 = f.getPoints().get(j).getX();
+                    double y1 = f.getPoints().get(j).getY();
+                    dessinController.trace(x0, y0, x1, y1);
+                }
+				else if (f instanceof Etoile) {
+                    double x = f.getPoints().get(0).getX();
+                    double y = f.getPoints().get(0).getY();
+                    double x1 = f.getPoints().get(j).getX();
+                    double y1 = f.getPoints().get(j).getY();
+                    dessinController.trace(x, y, x1, y1);
+
+                }
+			}
+
+		}
+	}
+	
 	
 	public void onEtoile() {
 		outilCourant = new OutilEtoile(this);
         statutController.outil.setText("Etoile");
+	}
+	
+	public void setEpaisseur(int val) {
+		this.epaisseur.setValue(val);
+		dessinController.setEpaisseur(val);
 	}
 	
 	public void onCrayon() {

@@ -24,6 +24,7 @@ public class StatutControleur implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		
+		
 	}
 	
 	public void setControleur(Controleur c) {

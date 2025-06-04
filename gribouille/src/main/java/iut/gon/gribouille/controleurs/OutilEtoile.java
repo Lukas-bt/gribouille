@@ -14,7 +14,7 @@ public class OutilEtoile extends Outil {
 
 	@Override
 	public void onMousePressed(MouseEvent evt) {
-		control.figureCourante = new Etoile(1, "black", evt.getX(), evt.getY());
+		control.figureCourante = new Etoile(control.epaisseur.getValue(), "black", evt.getX(), evt.getY());
 		control.dessin.addFigure(control.figureCourante);
 		prevX = evt.getX();
 		prevY = evt.getY();

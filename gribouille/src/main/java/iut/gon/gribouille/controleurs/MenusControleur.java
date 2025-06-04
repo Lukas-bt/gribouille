@@ -14,6 +14,9 @@ public class MenusControleur implements Initializable {
 	public Controleur control;
 
 	@FXML
+	private ToggleGroup epaisseur;
+	
+	@FXML
 	private RadioMenuItem crayon;
 
 	@FXML
@@ -33,8 +36,16 @@ public class MenusControleur implements Initializable {
 				control.onCrayon();
 			}
 		});
-	}
+		
+		epaisseur.selectedToggleProperty().addListener((obs, old, nvl) -> {
 
+                String id = ((RadioMenuItem) nvl).getText();
+                control.epaisseur.set(Integer.parseInt(id));
+                control.setEpaisseur(Integer.parseInt(id));
+
+        });
+		
+	}
 	public void setControleur(Controleur c) {
 		this.control = c;
 	}

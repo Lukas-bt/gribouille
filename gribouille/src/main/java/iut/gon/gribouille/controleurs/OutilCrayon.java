@@ -15,7 +15,7 @@ public class OutilCrayon extends Outil {
 	@Override
 	public void onMousePressed(MouseEvent event) {
 		System.out.println("a");
-		control.figureCourante = new Trace(1, "black", event.getX(), event.getY());
+		control.figureCourante = new Trace(control.epaisseur.getValue(), "black", event.getX(), event.getY());
 		control.dessin.addFigure(control.figureCourante);
 		control.prevX.set(event.getX());
 		control.prevY.set(event.getY());
