@@ -12,7 +12,6 @@ Gribouille is a simple drawing application developed using Java and JavaFX. It p
 -   **Line Thickness:** Select from a range of line thicknesses (1-9) via the menu.
 -   **Status Bar:** Displays real-time information about the mouse coordinates (X, Y), the currently selected tool, line thickness, and color.
 -   **Menu System:** A menu bar for accessing tools, thickness options, and application controls.
--   **MVC Architecture:** The application is structured using a Model-View-Controller pattern, separating the data model, user interface (FXML), and control logic.
 
 ## Technologies Used
 
@@ -31,7 +30,7 @@ Gribouille is a simple drawing application developed using Java and JavaFX. It p
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/AtsukaDev/gribouille.git
+    git clone https://github.com/Lukas-bt/gribouille.git
     cd gribouille
     ```
 
